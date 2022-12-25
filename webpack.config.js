@@ -1,5 +1,6 @@
 const path = require('path')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
+console.log(`Path:==>>  ${path}`)
 module.exports = {
     entry: './src/index.tsx',
     devtool: 'inline-source-map',
@@ -22,7 +23,7 @@ module.exports = {
                 use: ['style-loader', 'css-loader'],
             },
             {
-                test: /\.(glsl|vs|fs|vert|frag)$/,
+                test: /\.glsl$/,
                 exclude: /node_modules/,
                 use: ['raw-loader', 'glslify-loader'],
             },
@@ -30,6 +31,10 @@ module.exports = {
                 test: /\.(png|svg|jpg|jpeg|gif)$/i,
                 type: 'asset/resource',
               },
+              {
+                test: /\.(ogg|mp3)$/i,
+                type: 'file-loader',
+              }
         ]
     },
     resolve: {

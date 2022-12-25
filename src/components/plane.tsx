@@ -6,7 +6,7 @@ import * as THREE from 'three'
 import { planeProps } from "../types/types";
 import { folder, useControls } from "leva";
 import { changeGUI } from "./commons";
-
+let re
 export default function Plane(props: planeProps&JSX.IntrinsicElements['mesh']) {
 
     const colors={

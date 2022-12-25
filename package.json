@@ -19,18 +19,20 @@
     "leva": "^0.9.34",
     "mathjs": "^10.6.1",
     "postprocessing": "^6.28.1",
+    "raw-loader": "^4.0.2",
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-scripts": "5.0.1",
+    "style-loader": "^3.3.1",
     "three": "^0.141.0",
     "ts-shader-loader": "^1.0.6",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "start": "craco start",
+    "build": "craco build",
+    "test": "craco test",
+    "eject": "craco eject",
     "wstart": "webpack --watch",
     "serve": "webpack serve"
   },
@@ -53,16 +55,18 @@
     ]
   },
   "devDependencies": {
+    "@craco/craco": "^7.0.0",
+    "@craco/types": "^7.0.0",
     "@types/dat.gui": "^0.7.7",
     "@types/three": "^0.141.0",
     "css-loader": "^6.7.1",
+    "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.0",
-    "raw-loader": "^4.0.2",
-    "style-loader": "^3.3.1",
     "ts-loader": "^9.3.0",
     "typescript": "^4.7.4",
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.9.2",
     "webpack-glsl-loader": "^1.0.1"
-  }
+  },
+  "cracoConfig": "config/.cracorc.js"
 }

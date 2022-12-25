@@ -1,8 +1,8 @@
 import { useEffect, useRef } from "react";
-import solarVertex from './shaders/solar/vertex.glsl'
-import solarFragment from './shaders/solar/fragment.glsl'
 import * as THREE from 'three'
 import { useFrame } from "@react-three/fiber";
+import solarVertex from './shaders/solar/vertex.glsl'
+import solarFragment from './shaders/solar/fragment.glsl'
 // import {folder, useControls } from "leva";
 export default function Solar(props: JSX.IntrinsicElements['mesh']) {
 

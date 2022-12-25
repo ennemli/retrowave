@@ -7,6 +7,7 @@ import { PositionalAudio, Stats } from '@react-three/drei'
 import { folder, useControls } from 'leva'
 import * as THREE from 'three'
 import {  useRef } from "react";
+import audioSrc from '../audios/voyage-enter.ogg'
 function Effect() {
     const bloomProps = {
         strength: {
@@ -85,7 +86,7 @@ export default function Scene() {
             <Fog/>
             <Effect />
             <Plane planeArgs={planeArgs} division={division} />
-            <PositionalAudio position={[0,0,2]} autoplay url="./audios/Voyage - Enter.ogg" distance={15} loop/>
+            <PositionalAudio position={[0,0,2]} autoplay url={`.${audioSrc}`} distance={15} loop/>
         </>
 
     )
