@@ -9,7 +9,7 @@ import * as THREE from 'three'
 import React, {  Suspense, useEffect, useRef } from "react";
 import audioSrc from '../audios/voyage-enter.ogg'
 function Ready({setReady}:{setReady:React.Dispatch<React.SetStateAction<boolean>>}){
-    useEffect(()=>()=>void setReady(true),[])
+    useEffect(()=>()=>void  setReady(true),[])
     return null
   }
 function Effect() {
