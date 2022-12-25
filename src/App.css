@@ -1,0 +1,15 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+#root,body,canvas{
+  overflow: hidden;
+  width: 100wh;
+  height: 100vh;
+  
+}
+canvas{
+  background-color: black;
+
+}
