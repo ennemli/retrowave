@@ -9,7 +9,36 @@
   height: 100vh;
   
 }
-canvas{
-  background-color: black;
+div.loading{
+  background-color: rgb(0, 0, 0);
+  width:100%;
+  height:100%;
+  display: flex;
+  align-items: center;
+}
 
+div.loading button{
+  display: block;
+  margin: auto;
+  width: 12%;
+  height: 10%;
+  border: 2px solid #FFFFFF;
+  background: #000000;
+  color: #FFFFFF;
+  font-weight: bold;
+  font-size: 1.2rem;
+  border-radius: 4px;
+}
+div.loading button:hover{
+  background-color: rgba(255, 255, 255, 0.1);
+  cursor: pointer;
+}
+
+div.loading .spinner{
+  margin: auto;
+  width: 12%;
+  height: 12%;  
+}
+.spinner img{
+  width: 100%;
 }

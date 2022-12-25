@@ -32,7 +32,7 @@ export default function Plane(props: planeProps&JSX.IntrinsicElements['mesh']) {
     })
     useEffect(() => {
         mesh.current.geometry.rotateX(Math.PI * -0.5);
-    })
+    },[])
 
     useFrame(({ clock }: { clock: THREE.Clock }) => {
         const elapsedTime = clock.getElapsedTime()

@@ -6,8 +6,12 @@ import { SelectiveBloom } from "./effects/bloomEffect";
 import { PositionalAudio, Stats } from '@react-three/drei'
 import { folder, useControls } from 'leva'
 import * as THREE from 'three'
-import {  useRef } from "react";
+import React, {  Suspense, useEffect, useRef } from "react";
 import audioSrc from '../audios/voyage-enter.ogg'
+function Ready({setReady}:{setReady:React.Dispatch<React.SetStateAction<boolean>>}){
+    useEffect(()=>()=>void setReady(true),[])
+    return null
+  }
 function Effect() {
     const bloomProps = {
         strength: {
@@ -71,22 +75,27 @@ function Fog(){
 
 
 }
-export default function Scene() {
+
+
+export default function Scene({setReady}:{setReady:React.Dispatch<React.SetStateAction<boolean>>}) {
 
     const planeArgs = {
         width: 75,
         height: 75
     }
     const division = 28
-
     return (
         <>
+    <Suspense fallback={<Ready setReady={setReady}/>}>
+
             <Stats showPanel={0} />
             <CameraControls />
             <Fog/>
             <Effect />
             <Plane planeArgs={planeArgs} division={division} />
             <PositionalAudio position={[0,0,2]} autoplay url={`.${audioSrc}`} distance={15} loop/>
+            </Suspense>
+
         </>
 
     )
