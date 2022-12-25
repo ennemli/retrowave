@@ -62,7 +62,7 @@ function Fog(){
             density:{
                 min:0,
                 max:1,
-                value:0.01,
+                value:0.1,
                    step:0.005,
                 onChange:(v:number)=>{
                     fogRef.current.density=v
