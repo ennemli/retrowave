@@ -26,31 +26,28 @@ export const CameraControls = () => {
     const controlsRef = useRef<OrbitControls>(null!);
     const minDistance=25
     const maxDistance=165
-    const scrollTimeout=400
+    const ms=400
     useEffect(()=>{
-        let timeoutId:NodeJS.Timeout|undefined=undefined
-        camera.userData.scrollOccurred=false
-        window.addEventListener('wheel',()=>{
-            if(timeoutId){
-                clearTimeout(timeoutId)
-            }
-            timeoutId=setTimeout(()=>{
-                camera.userData.scrollOccurred=true
-            },scrollTimeout)
-
-        },false)
-
+        camera.userData.zoomOutOccurred=false
+        camera.userData.zoomIn=false
     })
     useFrame(() => {
         const controls = controlsRef.current
-        if(camera.userData.scrollOccurred){
-            const normalizedDistance=controls.getDistance()/maxDistance
-            const zPos=Math.max(minDistance,camera.position.z-THREE.MathUtils.lerp(0,1,normalizedDistance*2.)*3.)
-            camera.position.z=zPos
-            if(zPos===minDistance){
-                camera.userData.scrollOccurred=false
-            }
+        if(camera.position.z>minDistance&&!camera.userData.zoomIn){
+            setTimeout(()=>{
+                camera.userData.zoomOutOccurred=true
+            },ms)
+            camera.userData.zoomIn=true
         }
+        if(camera.userData.zoomOutOccurred){
+        const normalizedDistance=controls.getDistance()/maxDistance
+        const zPos=Math.max(minDistance,camera.position.z-THREE.MathUtils.lerp(0,1,normalizedDistance*2.)*3.)
+        camera.position.z=zPos
+        if(zPos<=minDistance){
+            camera.userData.zoomOutOccurred=false
+            camera.userData.zoomIn=false
+        }
+    }
         controls.update()
 
     });
