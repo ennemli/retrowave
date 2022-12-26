@@ -31,6 +31,7 @@ export const CameraControls = () => {
         camera.userData.zoomOutOccurred=false
         camera.userData._timeoutId=-1
         camera.userData.lastZPos=minDistance
+
         return ()=>{
             if(camera.userData._timeoutId){
                 clearTimeout(camera.userData._timeoutId)
@@ -40,7 +41,8 @@ export const CameraControls = () => {
     useFrame(() => {
         const controls = controlsRef.current
         controls.update()
-        if(camera.position.z>camera.userData.lastZPos){
+        
+        if(camera.position.z>camera.userData.lastZPos&&!(camera.userData.lastZPos>=maxDistance)){
             if(camera.userData._timeoutId>0){
                 clearTimeout(camera.userData._timeoutId)
             }
@@ -55,15 +57,15 @@ export const CameraControls = () => {
         if(camera.userData.zoomOutOccurred){
             const normalizedDistance=controls.getDistance()/maxDistance
             const zPos=Math.max(minDistance,camera.position.z-THREE.MathUtils.lerp(0,1,normalizedDistance*2.)*3.)
+            camera.userData.lastZPos=camera.position.z
+
             camera.position.z=zPos
 
             if(zPos<=minDistance){
                 camera.userData.zoomOutOccurred=false
-                camera.userData.lastZPos=zPos
-
-    
             }
         }
+
     
         
 
