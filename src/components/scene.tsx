@@ -3,15 +3,11 @@ import Solar from "./solar";
 import WorldPlane from "./worldPlane";
 import { CameraControls } from "./camera/cameraControls";
 import { SelectiveBloom } from "./effects/bloomEffect";
-import { PositionalAudio, Stats } from '@react-three/drei'
+import {  Stats } from '@react-three/drei'
 import { folder, useControls } from 'leva'
 import * as THREE from 'three'
-import React, {  Suspense, useEffect, useRef } from "react";
-import audioSrc from '../audios/voyage-enter.ogg'
-function Ready({setReady}:{setReady:React.Dispatch<React.SetStateAction<boolean>>}){
-    useEffect(()=>()=>void  setReady(true),[])
-    return null
-  }
+import {  useRef } from "react";
+
 function Effect() {
     const bloomProps = {
         strength: {
@@ -77,7 +73,7 @@ function Fog(){
 }
 
 
-export default function Scene({setReady}:{setReady:React.Dispatch<React.SetStateAction<boolean>>}) {
+export default function Scene() {
 
     const planeArgs = {
         width: 75,
@@ -86,15 +82,12 @@ export default function Scene({setReady}:{setReady:React.Dispatch<React.SetState
     const division = 28
     return (
         <>
-    <Suspense fallback={<Ready setReady={setReady}/>}>
 
             <Stats showPanel={0} />
             <CameraControls />
             <Fog/>
             <Effect />
             <Plane planeArgs={planeArgs} division={division} />
-            <PositionalAudio position={[0,0,2]} autoplay url={`.${audioSrc}`} distance={15} loop/>
-            </Suspense>
 
         </>
 
