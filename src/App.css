@@ -40,12 +40,18 @@ div.loading button:hover{
 }
 div.loading .spinner{
   margin: auto;
-  width:12%;
+  width:30%;
 }
 .spinner img{
   width: 100%;
 }
-
+header{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  align-items: center;
+  flex-direction: column-reverse;
+}
 header .repoLink{
   margin: 1.5rem ;
 }
@@ -58,3 +64,28 @@ header img{
   width: 100%;
   height: 100%;
 }
+header .warning{
+  margin: 10px 0px;
+}
+
+header .warning span{
+  color: #ffcc00;
+  font-size: 1.4rem;
+  font-weight: bold;
+
+}
+header .warning p{
+  color: #FFFFFF;
+  font-size: 1.05rem;
+
+}
+
+/*Media Queries*/
+
+
+@media (min-width: 768px) { 
+  div.loading .spinner{
+    width: 12%!important;;
+  }
+ }
+
