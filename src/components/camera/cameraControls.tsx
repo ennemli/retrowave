@@ -26,38 +26,46 @@ export const CameraControls = () => {
     const controlsRef = useRef<OrbitControls>(null!);
     const minDistance=25
     const maxDistance=165
-    const ms=800
+    const ms=1200
     useEffect(()=>{
-        let timeoutId:undefined|NodeJS.Timeout=undefined
-
-        const controls = controlsRef.current
         camera.userData.zoomOutOccurred=false
-        
-        controls.addEventListener('change',()=>{
-            if(timeoutId){
-                clearTimeout(timeoutId)
+        camera.userData._timeoutId=-1
+        camera.userData.lastZPos=minDistance
+        return ()=>{
+            if(camera.userData._timeoutId){
+                clearTimeout(camera.userData._timeoutId)
             }
-            timeoutId=setTimeout(()=>{
-                camera.userData.zoomOutOccurred=true
-            },ms)
-
-        })
-        camera.userData.zoomIn=false
+        }
     })
     useFrame(() => {
         const controls = controlsRef.current
-
-        if(camera.userData.zoomOutOccurred){
-        const normalizedDistance=controls.getDistance()/maxDistance
-        const zPos=Math.max(minDistance,camera.position.z-THREE.MathUtils.lerp(0,1,normalizedDistance*2.)*3.)
-        if(zPos<=minDistance){
+        controls.update()
+        if(camera.position.z>camera.userData.lastZPos){
+            if(camera.userData._timeoutId>0){
+                clearTimeout(camera.userData._timeoutId)
+            }
             camera.userData.zoomOutOccurred=false
-        }else{
-        camera.position.z=zPos
+
+            camera.userData._timeoutId=setTimeout(()=>{
+                camera.userData.zoomOutOccurred=true
+            },ms)
+            camera.userData.lastZPos=camera.position.z
+        
         }
-       
-    }
-    controls.update()
+        if(camera.userData.zoomOutOccurred){
+            const normalizedDistance=controls.getDistance()/maxDistance
+            const zPos=Math.max(minDistance,camera.position.z-THREE.MathUtils.lerp(0,1,normalizedDistance*2.)*3.)
+            camera.position.z=zPos
+
+            if(zPos<=minDistance){
+                camera.userData.zoomOutOccurred=false
+                camera.userData.lastZPos=zPos
+
+    
+            }
+        }
+    
+        
 
     });
     return <orbitControls 
