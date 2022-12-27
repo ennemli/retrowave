@@ -9,7 +9,7 @@ Node =>16.x
 
 ## Usage
 
-On your terminal
+Paste these commands on your terminal
 
 ### `git clone https://github.com/ennemli/retrowave.git`
 
