@@ -9,6 +9,10 @@ Node =>16.x
 
 ## Usage
 
+On your terminal
+
+### `git clone https://github.com/ennemli/retrowave.git`
+
 Install the necessary node modules:
 ### `npm install`
 
