@@ -1,10 +1,20 @@
-#
+# [Live Demo](https://retrowave-ennemli.vercel.app)
 
-# Getting Started with Create React App
+Retrowave scene coded with [Threejs](https://threejs.org) and [React](https://reactjs.org/).\
+This code is released under the MIT License.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Requirements
+Node =>16.x
 
-## Available Scripts
+
+## Usage
+
+Paste these commands on your terminal
+
+### `git clone https://github.com/ennemli/retrowave.git`
+
+Install the necessary node modules:
+### `npm install`
 
 In the project directory, you can run:
 
@@ -47,3 +57,13 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
+# License
+Copyright (c) 2022 Ennemli Muhssin
+Released under [the MIT license](https://opensource.org/licenses/mit-license.php)
+
+# Excluded from the MIT License
+- The Music
+   - Artist: Voyage
+   - Song: Enter
+   - License: [Merlin] Revelator (on behalf of opuulent); BMI - Broadcast Music Inc., SongsInTheKeyOfKnife, and 2 Music Rights Societies
+- The gif for Loading: [Source](https://giphy.com/mintostudio)
