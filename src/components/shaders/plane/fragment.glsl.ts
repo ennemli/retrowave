@@ -9,7 +9,7 @@ uniform vec3 gridColor;
 uniform vec3 mountainColor;
 
 `
-export const main=THREE.ShaderChunk['output_fragment'].replace(
+export const main=THREE.ShaderChunk['opaque_fragment'].replace(
     'gl_FragColor = vec4( outgoingLight, diffuseColor.a );',
 `
 vec2 coord = v_uv*(uDivision*0.5-1.);

@@ -81,7 +81,7 @@ export default function Plane(props: planeProps&JSX.IntrinsicElements['mesh']) {
                     )
                     shader.fragmentShader=planeFragment.declaration+shader.fragmentShader
                     shader.fragmentShader=shader.fragmentShader.replace(
-                     '#include <output_fragment>' ,
+                     '#include <opaque_fragment>' ,
                      planeFragment.main  
                     )
                     const material=mesh.current.material as THREE.MeshBasicMaterial
