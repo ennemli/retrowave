@@ -22,7 +22,7 @@ export function SelectiveBloom({ layers: layer = 11, children, enabled = true, s
             })
         }
         return children
-    },[])
+    },[isBloomEnabled, children, layer])
     if (isBloomEnabled) {
 
         const renderScene = new RenderPass(scene, camera)

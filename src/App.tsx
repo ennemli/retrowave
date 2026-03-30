@@ -9,7 +9,7 @@ import Header from './html/header';
 import audioSrc from './audios/voyage-enter.ogg'
 import { PositionalAudio } from '@react-three/drei';
 function Ready({setReady}:{setReady:React.Dispatch<React.SetStateAction<boolean>>}){
-    useEffect(()=>()=>void  setReady(true),[])
+    useEffect(()=>()=>void  setReady(true),[setReady])
     return null
   }
 function App() {
