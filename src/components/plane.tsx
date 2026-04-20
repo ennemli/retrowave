@@ -67,7 +67,7 @@ export default function Plane(props: planeProps&JSX.IntrinsicElements['mesh']) {
         }
     return (
         <mesh {...props}  ref={mesh} >
-            <planeBufferGeometry  args={[planeArgs.width, planeArgs.height, 100, 100]} />
+            <planeGeometry  args={[planeArgs.width, planeArgs.height, 100, 100]} />
             <meshBasicMaterial
             onBeforeCompile={
                 (shader)=>{

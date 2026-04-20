@@ -35,7 +35,7 @@ export default function Solar(props: JSX.IntrinsicElements['mesh']) {
 
             <mesh {...props}  ref={mesh}>
 
-                <planeBufferGeometry args={[50, 50]} />
+                <planeGeometry args={[50, 50]} />
                 <shaderMaterial  vertexShader={solarVertex} fragmentShader={solarFragment} transparent={true} uniforms={
                     {uTime:{
                         value:0,
